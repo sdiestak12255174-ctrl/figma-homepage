@@ -1,0 +1,13 @@
+:root {
+  /* Colors (estimated from the design, we'll fix them using Figma) */
+  --purple-main: #703FB0;
+  --purple-dark: #28183F;
+  --purple-light: #F5EFFB;
+  --text-dark: #28183F;
+  --text-gray: #5b5670;
+  --white: #ffffff;
+
+  /* Fonts */
+  --font-heading: 'Inter', sans-serif;
+  --font-body:  'Inter', sans-serif;
+}

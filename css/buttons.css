@@ -1,0 +1,37 @@
+/* Reusable button styles - gamitin ng lahat ng members */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--purple-main);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Filled: "Book an Appointment" */
+.btn-filled {
+  background-color: var(--purple-main);
+  color: var(--white);
+}
+
+.btn-filled:hover {
+  background-color: var(--purple-dark);
+  border-color: var(--purple-dark);
+  transform: translateY(-2px);
+}
+
+/* Outline: "Call the Clinic" */
+.btn-outline {
+  background-color: transparent;
+  color: var(--purple-main);
+}
+
+.btn-outline:hover {
+  background-color: var(--purple-main);
+  color: var(--white);
+  transform: translateY(-2px);
+}
