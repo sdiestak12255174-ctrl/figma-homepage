@@ -1,0 +1,64 @@
+/* Our Services - Member 3 (Duenas) */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background-color: var(--white);
+  border: 1px solid #e8e0f2;
+  border-radius: 16px;
+  padding: 24px 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(112, 63, 176, 0.15);
+  border-color: var(--purple-main);
+}
+
+.service-icon {
+  width: 36px;
+  height: 36px;
+  background-color: var(--purple-light);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.service-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.service-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.service-text {
+  font-size: 12px;
+  color: var(--text-gray);
+  line-height: 1.6;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 576px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
