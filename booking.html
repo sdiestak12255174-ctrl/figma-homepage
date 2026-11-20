@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book an Appointment - Teeth Street Dental Clinic</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+
+  <main class="page-narrow">
+    <a href="index.html" class="back-link">&larr; Back to Home</a>
+
+    <h1 class="section-title" style="text-align:left;">Book an Appointment</h1>
+    <p class="section-subtitle" style="text-align:left; margin-bottom:24px;">
+      Fill out the form and our team will confirm your schedule.
+    </p>
+
+    <div class="booking-card">
+      <form class="booking-form" id="bookingForm">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service</label>
+          <select id="service" required>
+            <option value="">Select a service</option>
+            <option>General Dentistry</option>
+            <option>Orthodontics</option>
+            <option>Cosmetic Dentistry</option>
+            <option>Pediatric Dentistry</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <input type="time" id="time" required>
+          </div>
+        </div>
+
+        <div class="form-message" id="formMessage"></div>
+
+        <button type="submit" class="btn btn-filled">Submit Booking</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    var form = document.getElementById('bookingForm');
+    var message = document.getElementById('formMessage');
+    var dateInput = document.getElementById('date');
+
+    // Hindi pwedeng pumili ng nakaraang petsa
+    var today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var booking = {
+        id: Date.now(),
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        service: document.getElementById('service').value,
+        date: dateInput.value,
+        time: document.getElementById('time').value,
+        status: 'Pending',
+        createdAt: new Date().toLocaleString()
+      };
+
+      try {
+        var bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        bookings.push(booking);
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+
+        message.className = 'form-message success';
+        message.textContent = 'Thank you, ' + booking.name + '! Your booking has been submitted. We will confirm it soon.';
+        form.reset();
+      } catch (err) {
+        message.className = 'form-message error';
+        message.textContent = 'Sorry, something went wrong. Please try again.';
+      }
+    });
+  </script>
+
+</body>
+</html>
